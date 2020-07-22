@@ -13,7 +13,6 @@ DATABASE_URL = """postgres://ggkxihlzkqptky:e6ac914cd427a91a5d3705a2b6cc710ad402
 
 
 INSTALLED_APPS = [
-    'channels',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -21,7 +20,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.sites',
     'django.contrib.staticfiles',
-    'musicplace'
+    'musicplace',
+    'channels',
 ]
 
 MIDDLEWARE = [
