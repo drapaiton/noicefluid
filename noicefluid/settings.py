@@ -3,8 +3,8 @@ import dj_database_url
 
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = True
-ALLOWED_HOSTS = ['fluidsv.herokuapp.com', '127.0.0.1']
+DEBUG = False
+ALLOWED_HOSTS = ['fluidsv.herokuapp.com', '127.0.0.1', '.noicefluid.com']
 
 
 SECRET_KEY = """=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig"""
@@ -14,13 +14,13 @@ DATABASE_URL = """postgres://ggkxihlzkqptky:e6ac914cd427a91a5d3705a2b6cc710ad402
 
 INSTALLED_APPS = [
     'channels',
-    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.sites',
+    'django.contrib.staticfiles',
     'musicplace'
 ]
 
@@ -79,16 +79,6 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-
-
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+# PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
-
-HOST_URL = 'https://fluidsv.herokuapp.com'
-if DEBUG:
-    HOST_URL = 'http://127.0.0.1:8000'
