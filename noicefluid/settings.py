@@ -14,6 +14,7 @@ DATABASE_URL = """postgres://ggkxihlzkqptky:e6ac914cd427a91a5d3705a2b6cc710ad402
 
 INSTALLED_APPS = [
     'channels',
+    'django.contrib.staticfiles',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -77,8 +78,17 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
 PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
-STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
+
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
 HOST_URL = 'https://fluidsv.herokuapp.com'
 if DEBUG:
     HOST_URL = 'http://127.0.0.1:8000'
