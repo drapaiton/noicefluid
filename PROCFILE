@@ -1,2 +1,1 @@
-release: python manage.py migrate
-web: gunicorn noicefluid.wsgi --log-file -
+web: gunicorn noicefluid.wsgi --log-file
