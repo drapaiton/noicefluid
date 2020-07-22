@@ -1,10 +1,14 @@
 import dj_database_url
 import os
+from boto.s3.connection import S3Connection
+
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 SECRET_KEY = os.environ['SECRET_KEY']
+
 DEBUG = False
 
 ALLOWED_HOSTS = ['noicefluid.com', 'fluidsv.herokuapp.com', '127.0.0.1']
