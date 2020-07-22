@@ -3,7 +3,7 @@ import os
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'h#1f$uf29)l03yob-6uc@w6gqzxuw$ad#&wh3kklu!6zcgi00%'
+SECRET_KEY = os.environ['SECRET_KEY']
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -94,7 +94,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": ["redis://h:p79c5f6a0574e99b302ee54990a966357201d7f0da90a436084b042f8f2609479@ec2-54-164-156-5.compute-1.amazonaws.com:8009"],
+            "hosts": [os.environ['REDIS_URL']],
         },
     },
 }
