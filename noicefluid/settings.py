@@ -5,9 +5,9 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = os.environ['SECRET_KEY']
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['.noicefluid.com', '.fluidsv.herokuapp.com']
+ALLOWED_HOSTS = ['noicefluid.com', 'fluidsv.herokuapp.com', '127.0.0.1']
 
 
 # Application definition
@@ -54,6 +54,8 @@ TEMPLATES = [
 
 # default http
 WSGI_APPLICATION = 'noicefluid.wsgi.application'
+ASGI_APPLICATION = 'noicefluid.routing.application'
+
 DATABASES = {
     'default': dj_database_url.config(conn_max_age=600, ssl_require=True)
 }
@@ -74,7 +76,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'es-mx'
 
-TIME_ZONE = 'America/Mexico_City'
+TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -86,7 +88,6 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Channels
-ASGI_APPLICATION = 'noicefluid.routing.application'
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -95,3 +96,13 @@ CHANNEL_LAYERS = {
         },
     },
 }
+
+CORS_ORIGIN_WHITELIST = ('localhost:3000')
+ACCOUNT_EMAIL_REQUIRED = False
+ACCOUNT_AUTHENTICATION_METHOD = 'username'
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+CSRF_COOKIE_NAME = "csrftoken"
+
+HOST_URL = 'https://fluidsv.herokuapp.com'
+if DEBUG:
+    HOST_URL = 'http://127.0.0.1:8000'
