@@ -1,0 +1,12 @@
+# chat/views.py
+from django.shortcuts import render
+
+
+def index(request):
+    return render(request, 'musicplace/index.html')
+
+
+def room(request, room_name: str):
+    return render(request, 'musicplace/room.html', {
+        'room_name': room_name
+    })
