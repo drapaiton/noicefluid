@@ -19,7 +19,6 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-    'django.contrib.staticfiles',
     'django.contrib.sites',
     'musicplace'
 ]
@@ -78,7 +77,8 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
-
+PROJECT_DIR = os.path.dirname(os.path.abspath(__file__))
+STATIC_ROOT = os.path.join(PROJECT_DIR, 'static')
 HOST_URL = 'https://fluidsv.herokuapp.com'
 if DEBUG:
     HOST_URL = 'http://127.0.0.1:8000'
