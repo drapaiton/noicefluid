@@ -4,8 +4,8 @@ import dj_database_url
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEBUG = False
-ALLOWED_HOSTS = ['fluidsv.herokuapp.com', '127.0.0.1', '.noicefluid.com']
 
+ALLOWED_HOSTS = ['*']
 
 SECRET_KEY = """=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig"""
 REDIS_URL = """redis://h:p12b2540ed5a06647bee265ac96012730b1603fa794d8cd6114cfc14fedef5daf@ec2-54-146-142-219.compute-1.amazonaws.com:32699"""
