@@ -1,1 +1,1 @@
-web: gunicorn noicefluid.wsgi --log-file
+web: gunicorn noicefluid.wsgi --log-file -
