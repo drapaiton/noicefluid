@@ -6,3 +6,7 @@ DATABASES = {
         default=config('HEROKU_POSTGRESQL_WHITE_URL')
     )
 }
+
+# temp files fix (?)
+# STATIC_TMP = os.path.join(BASE_DIR, 'static')
+# os.makedirs(STATIC_TMP, exist_ok=True)
