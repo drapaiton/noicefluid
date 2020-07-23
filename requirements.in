@@ -1,6 +1,7 @@
-celery
 django
-channels
 django-channels
+django-redis
 dj-database-url
+channels
+celery
 whitenoise
