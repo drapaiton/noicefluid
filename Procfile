@@ -1,2 +1,2 @@
-web: daphne project.asgi:application --port $PORT --bind 0.0.0.0
+web: daphne noicefluid.asgi:application --port $PORT --bind 0.0.0.0
 worker: REMAP_SIGTERM=SIGQUIT celery worker --app project.celery.app --loglevel info
