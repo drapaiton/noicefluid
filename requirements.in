@@ -1,0 +1,6 @@
+celery
+django
+channels
+django-channels
+dj-database-url
+whitenoise
