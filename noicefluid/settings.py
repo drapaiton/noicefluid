@@ -1,16 +1,19 @@
+from decouple import config
 import dj_database_url
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DEBUG = False
 
-SECRET_KEY = """=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig"""
+DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
+print(f"debug is : {DEBUG}")
+
+SECRET_KEY = config(
+    'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
 
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'channels',
-    'lobby',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -18,9 +21,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'chat',
+    'lobby',
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -28,7 +33,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
 
 ROOT_URLCONF = 'noicefluid.urls'
@@ -50,14 +54,13 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'noicefluid.wsgi.application'
-ASGI_THREADS = 5
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default="""postgres://rnumgqftlcluym:c008cd8a84f4c76da5b061c80da38449f8aabc07f49843269f86627835dd160a@ec2-52-72-65-76.compute-1.amazonaws.com:5432/d9oph3g5v6d97f"""
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -74,16 +77,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-CHANNEL_LAYERS = {
-    "default": {
-        "BACKEND": "channels_redis.core.RedisChannelLayer",
-        "CONFIG": {
-            'hosts': ['redis://h:p2ce59b0856a8c7a866ac63c3848a3666e103d03e5e2c909dc5d559547a72f3a3@ec2-34-236-54-188.compute-1.amazonaws.com:12929'],
-        },
-    },
-}
-
-
 # internationalization
 
 LANGUAGE_CODE = 'es-mx'
@@ -97,12 +90,41 @@ USE_L10N = True
 USE_TZ = True
 
 # static
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+CELERY_BROKER_URL = os.environ['REDIS_URL']
+CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [os.environ['REDIS_URL']],
+        },
+    },
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": os.environ['REDIS_URL'],
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        }
+    }
+}
+
+SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+if config('DJANGO_PRODUCTION', default=False, cast=bool):
+    # replace production settings
+    from .settings_production import *
+
 ASGI_APPLICATION = "noicefluid.routing.application"
