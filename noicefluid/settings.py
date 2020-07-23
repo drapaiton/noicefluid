@@ -5,7 +5,6 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
-print(f"debug is : {DEBUG}")
 
 SECRET_KEY = config(
     'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
