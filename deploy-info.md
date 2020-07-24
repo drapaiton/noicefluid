@@ -32,6 +32,7 @@ Default [Settings_production.py] will be used
 
 - set [DATABASE_URL] in heroku credentials
 - set [REDIS_URL] in heroku credentials
+- set environment variables if needed from environment-example.txt
 
 # END
 
