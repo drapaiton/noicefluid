@@ -3,6 +3,8 @@ django-channels
 django-redis
 dj-database-url
 channels
+channels-redis
 requests
 celery
 whitenoise
+python-decouple
