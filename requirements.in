@@ -1,3 +1,4 @@
+daphne
 django
 django-channels
 django-redis
@@ -9,3 +10,4 @@ celery
 whitenoise
 python-decouple
 psycopg2
+redis
