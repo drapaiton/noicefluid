@@ -6,7 +6,7 @@ from celery import shared_task
 from channels.layers import get_channel_layer
 from django.core.cache import cache
 
-channel_layer = get_channel_layer('default')
+channel_layer = get_channel_layer()
 
 
 @shared_task
