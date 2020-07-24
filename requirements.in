@@ -3,5 +3,6 @@ django-channels
 django-redis
 dj-database-url
 channels
+requests
 celery
 whitenoise
