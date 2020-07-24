@@ -1,0 +1,10 @@
+.background-container {
+ position:fixed;
+ top:0;
+ left:0;
+ height:100vh;
+ width:100vw;
+ background-color:#f9f9fa;
+ background-image:url(https://aws1.discourse-cdn.com/standard11/uploads/mindsdb/original/1X/b6bb891a1c8e81b512670a44e1b61ef1865393e2.png);
+ background-size:auto
+}
