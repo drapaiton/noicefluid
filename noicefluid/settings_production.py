@@ -1,9 +1,5 @@
 import dj_database_url
 from decouple import config
-from .settings import DATABASES
-
-DATABASES['default'].update(dj_database_url.config(
-    conn_max_age=500, ssl_require=True))
 
 CELERY_BROKER_URL = config('REDIS_URL')
 CELERY_RESULT_BACKEND = config('REDIS_URL')
