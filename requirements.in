@@ -8,3 +8,4 @@ requests
 celery
 whitenoise
 python-decouple
+psycopg2
