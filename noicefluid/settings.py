@@ -5,14 +5,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
-REDIS_URL = config('REDIS_URL', default=None)
+SECRET_KEY = '=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig'
 
-SECRET_KEY = config(
-    'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
-
-print("debug {},redis_url {}, secret_key {}".format(
-    DEBUG == True, REDIS_URL != None, SECRET_KEY != '=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig'
-))
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -65,7 +59,6 @@ DATABASES = {
     }
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -82,15 +75,11 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # internationalization
-
 LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
-
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
 # static
@@ -102,33 +91,16 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-
-CELERY_BROKER_URL = os.environ['REDIS_URL']
-CELERY_RESULT_BACKEND = os.environ['REDIS_URL']
-
-CHANNEL_LAYERS = {
-    'default': {
-        'BACKEND': 'channels_redis.core.RedisChannelLayer',
-        'CONFIG': {
-            "hosts": config('REDIS_URL'),
-        },
-    },
-}
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": config('REDIS_URL'),
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient"
-        }
-    }
-}
-
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
+# perform validations between ( production or local )
+appliedProductionSettings = False
 if config('DJANGO_PRODUCTION', default=False, cast=bool):
     # replace production settings
     from .settings_production import *
+
+print("debug {}, django_production == {}".format(
+    DEBUG, appliedProductionSettings
+))
 
 ASGI_APPLICATION = "noicefluid.routing.application"
