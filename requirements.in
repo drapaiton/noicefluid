@@ -1,6 +1,5 @@
 daphne
 django
-django-channels
 django-redis
 dj-database-url
 channels
