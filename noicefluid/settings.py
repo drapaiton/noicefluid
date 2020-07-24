@@ -11,7 +11,7 @@ SECRET_KEY = config(
     'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
 
 print("debug {},redis_url {}, secret_key {}".format(
-    DEBUG != None, REDIS_URL != None, SECRET_KEY != '=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig'
+    DEBUG == True, REDIS_URL != None, SECRET_KEY != '=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig'
 ))
 ALLOWED_HOSTS = ['*']
 
@@ -110,7 +110,7 @@ CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
         'CONFIG': {
-            "hosts": [os.environ['REDIS_URL']],
+            "hosts": config('REDIS_URL'),
         },
     },
 }
@@ -118,7 +118,7 @@ CHANNEL_LAYERS = {
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": os.environ['REDIS_URL'],
+        "LOCATION": config('REDIS_URL'),
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient"
         }
