@@ -5,7 +5,8 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
-SECRET_KEY = '=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig'
+SECRET_KEY = config(
+    'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
 
 ALLOWED_HOSTS = ['*']
 
@@ -17,7 +18,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # 'chat',
+    'chat',
     'lobby',
 ]
 
@@ -93,14 +94,8 @@ STATICFILES_DIRS = (
 
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
-# perform validations between ( production or local )
-appliedProductionSettings = False
 if config('DJANGO_PRODUCTION', default=False, cast=bool):
     # replace production settings
     from .settings_production import *
-
-print("debug {}, django_production == {}".format(
-    DEBUG, appliedProductionSettings
-))
 
 ASGI_APPLICATION = "noicefluid.routing.application"
