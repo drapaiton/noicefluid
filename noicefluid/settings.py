@@ -5,10 +5,14 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
+REDIS_URL = config('REDIS_URL', default=None)
 
 SECRET_KEY = config(
     'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
 
+print("debug {},redis_url {}, secret_key {}".format(
+    DEBUG != None, REDIS_URL != None, SECRET_KEY != '=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig'
+))
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -19,7 +23,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'chat',
+    # 'chat',
     'lobby',
 ]
 
