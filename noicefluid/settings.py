@@ -6,7 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
 SECRET_KEY = config(
-    'SECRET_KEY', default='=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig')
+    'SECRET_KEY', default="""=_#oj93+t1=cx1zhf$s4xwr!%xq#9tr$*sa%iy_do8$%+g7^ig""")
 
 ALLOWED_HOSTS = ['*']
 
@@ -52,6 +52,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'noicefluid.wsgi.application'
+
 
 DATABASES = {
     'default': {
