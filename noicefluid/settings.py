@@ -53,7 +53,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'noicefluid.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -61,8 +60,9 @@ DATABASES = {
     }
 }
 
-DATABASES['default'].update(dj_database_url.config(
-    conn_max_age=500, ssl_require=True))
+DATABASES['default'].update(dj_database_url.parse(
+    config('DATABASE_URL'), conn_max_age=500, ssl_require=True))
+
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -96,10 +96,30 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+# CELERY & REDIS
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
 
-if config('DJANGO_PRODUCTION', default=False, cast=bool):
-    # replace production settings
-    from .settings_production import *
+CELERY_BROKER_URL = config('REDIS_URL')
+CELERY_RESULT_BACKEND = config('REDIS_URL')
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            "hosts": [config('REDIS_URL')],
+        },
+    },
+}
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": config('REDIS_URL'),
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient"
+        }
+    }
+}
+
 
 ASGI_APPLICATION = "noicefluid.routing.application"
