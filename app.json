@@ -1,0 +1,22 @@
+{
+	"name": "fluidsv",
+	"repository": "https://github.com/drapaiton/noicefluid/",
+	"env": {
+		"DJANGO_SECRET_KEY": {
+			"description": "A secret key for a particular Django installation."
+		}
+	},
+	"buildpacks": [
+		{
+			"url": "heroku/python"
+		}
+	],
+	"addons": [
+		{
+			"plan": "heroku-postgresql"
+		},
+		{
+			"plan": "heroku-redis"
+		}
+	]
+}
