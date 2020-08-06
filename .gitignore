@@ -1,8 +1,7 @@
 # personal stuff
-.vscode/
-LICENSE
-README.md
-LICENSE
+# .vscode/
+# README.md
+# LICENSE
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
