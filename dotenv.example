@@ -1,5 +1,0 @@
-SECRET_KEY=<random>
-DATABASE_URL=postgres://
-REDIS_URL=redis://
-DJANGO_DEBUG=False
-DJANGO_PRODUCTION=True
