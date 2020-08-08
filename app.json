@@ -1,5 +1,5 @@
 {
-	"name": "fluidsv",
+	"name": "Fluidsv",
 	"repository": "https://github.com/drapaiton/noicefluid/",
 	"env": {
 		"DJANGO_SECRET_KEY": {
