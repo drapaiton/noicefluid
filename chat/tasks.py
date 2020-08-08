@@ -1,8 +1,8 @@
 # Html Get
 import re
-from urllib import parse, request
+from urllib import parse
+import urllib.request
 import requests
-import time
 # django
 from asgiref.sync import async_to_sync
 from celery import shared_task
@@ -13,22 +13,20 @@ channel_layer = get_channel_layer()
 
 
 @shared_task
-def sum(channel_name, x, y):
-    message = '{}+{}={}'.format(x, y, int(x) + int(y))
-    async_to_sync(channel_layer.send)(
-        channel_name, {"type": "chat.message", "message": message})
-
-
-@shared_task
 def add(channel_name: str, search: str):
+    """Youtube web scrapping to get a list of videos"""
     # ---- handle petition ----
-    query_string = parse.urlencode({'search_query': search})
-    html_content = request.urlopen(
-        'http://www.youtube.com/results?' + query_string)
-    # print(html_content.read().decode())
 
-    search_results = re.findall(
-        "\/watch\?v=(.{11})", html_content.read().decode())
+    query_string = parse.urlencode({'search_query': search})
+
+    req = urllib.request.Request(
+        'http://www.youtube.com/results?' + query_string)
+
+    with urllib.request.urlopen(req) as response:
+        html_content = response
+        # print(html_content.read().decode())
+        search_results = re.findall(
+            "\/watch\?v=(.{11})", html_content.read().decode())
 
     message = ""
     for i in search_results:

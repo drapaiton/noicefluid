@@ -1,4 +1,5 @@
-from django.contrib import messages
+# django response message
+# from django.contrib import messages
 from django.views.generic import TemplateView
 
 
