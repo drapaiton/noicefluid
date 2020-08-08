@@ -19,8 +19,12 @@ def add(channel_name: str, search: str):
 
     query_string = parse.urlencode({'search_query': search})
 
-    req = urllib.request.Request(
-        'http://www.youtube.com/results?' + query_string)
+    # Verificate
+    req = 'http://www.youtube.com/results?' + query_string
+    if req.lower().startswith('http'):
+        req = urllib.request.Request(req)
+    else:
+        raise ValueError
 
     with urllib.request.urlopen(req) as response:
         html_content = response
