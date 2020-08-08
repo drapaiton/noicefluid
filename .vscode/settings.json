@@ -1,31 +1,31 @@
-{
-	"files.exclude": {
-		// not important
-		"**/LICENSE": true,
-		"**/.git": true,
-		"**/.svn": true,
-		"**/.hg": true,
-		"**/CVS": true,
-		"**/.DS_Store": true,
-		"**/__pycache__/": true,
-		// important
-		"**/.git*": true,
-		"**/*.sqlite3": true,
-		"**/.vscode/": true,
-		"**/__init__.py": true,
-		"**/migrations/": true,
-		"**/requirements.*": true,
-		// docs
-		"**/*.txt": true,
-		"**/*.md": true,
-		"**/dotenv.example": true,
-		"**/readme.md": true
-	},
-	"files.associations": {
-		"**/*.html": "html",
-		"**/templates/**/*.html": "django-html",
-		"**/templates/**/*": "django-txt",
-		"**/requirements{/**,*}.{txt,in}": "pip-requirements"
-	},
-	"emmet.includeLanguages": { "django-html": "html" }
-}
+// {
+// 	"files.exclude": {
+// 		// not important
+// 		"**/LICENSE": true,
+// 		"**/.git": true,
+// 		"**/.svn": true,
+// 		"**/.hg": true,
+// 		"**/CVS": true,
+// 		"**/.DS_Store": true,
+// 		"**/__pycache__/": true,
+// 		// important
+// 		"**/.git*": true,
+// 		"**/*.sqlite3": true,
+// 		"**/.vscode/": true,
+// 		"**/__init__.py": true,
+// 		"**/migrations/": true,
+// 		"**/requirements.*": true,
+// 		// docs
+// 		"**/*.txt": true,
+// 		"**/*.md": true,
+// 		"**/dotenv.example": true,
+// 		"**/readme.md": true
+// 	},
+// 	"files.associations": {
+// 		"**/*.html": "html",
+// 		"**/templates/**/*.html": "django-html",
+// 		"**/templates/**/*": "django-txt",
+// 		"**/requirements{/**,*}.{txt,in}": "pip-requirements"
+// 	},
+// 	"emmet.includeLanguages": { "django-html": "html" }
+// }
