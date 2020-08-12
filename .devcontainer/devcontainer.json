@@ -35,7 +35,7 @@
 		9000
 	],
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "pip3 install -r requirements.in",
+	"postCreateCommand": "pip3 install -r requirements.in --upgrade pip",
 	// Comment out to connect as root instead.
-	"remoteUser": "vscode"
+	// "remoteUser": "vscode"
 }
