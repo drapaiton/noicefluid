@@ -9,8 +9,8 @@
         "**/.DS_Store": true,
         "**/__pycache__/": true,
         "**/*.map": true,
-        "**/.devcontainer/*": true,
-        "**/node_modules/*": true,
+        "**/.devcontainer/": true,
+        "**/node_modules/": true,
         // important
         "**/.git*": true,
         "**/.vscode/": true,
