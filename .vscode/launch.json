@@ -12,7 +12,8 @@
                 "--loglevel",
                 "info"
             ],
-            "type": "python"
+            "type": "python",
+            "console": "internalConsole"
         },
         {
             "name": "Django",
@@ -23,15 +24,16 @@
                 "runserver",
                 "9000"
             ],
-            "django": true
+            "django": true,
+            "console": "integratedTerminal"
         }
     ],
     "compounds": [
         {
             "name": "Webserver",
             "configurations": [
+                "Django",
                 "CeleryWorker",
-                "Django"
             ]
         }
     ]
