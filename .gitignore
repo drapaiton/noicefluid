@@ -9,6 +9,8 @@ node_modules/*
 *.map
 package-lock.json
 
+# django staticfiles
+staticfiles/*
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
