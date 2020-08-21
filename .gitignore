@@ -4,7 +4,7 @@ README.md
 LICENSE
 
 # javascript/typescript
-node_modules/*
+node_modules/
 *.d.ts
 *.map
 package-lock.json
