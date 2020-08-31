@@ -12,14 +12,10 @@
         "**/.devcontainer/": true,
         "**/node_modules/": true,
         // important
-        "**/.git*": true,
         "**/.vscode/": true,
-        // "**/__init__.py": true,
+        "**/.git*": true,
         "**/migrations/": true,
         "**/requirements.*": true,
-        // text
-        "**/*.txt": true,
-        "**/*.md": true,
-        "**/readme.md": true
+        // "**/__init__.py": true,
     }
 }
