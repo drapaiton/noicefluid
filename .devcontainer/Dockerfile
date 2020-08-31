@@ -19,5 +19,10 @@ RUN pip3 --disable-pip-version-check --no-cache-dir install -r /tmp/pip-tmp/requ
 # [Optional] Uncomment this section to install additional OS packages.
 RUN apt-get update \
     && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends nodejs npm \
-    && npm install --global -y --save-dev typescript @types/jquery @types/gapi
+    && pip --disable-pip-version-check --no-cache-dir install pylint
+
+# node version 9 using the " n " package
+RUN apt-get -y install --no-install-recommends nodejs npm && npm install -g n && n 9
+
+# install npm dev packages
+RUN npm install --global -y --save-dev typescript @types/jquery @types/gapi
