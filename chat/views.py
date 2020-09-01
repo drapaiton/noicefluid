@@ -4,4 +4,4 @@ from django.views.generic import TemplateView
 
 
 class ChatView(TemplateView):
-    template_name = 'chat/chat.html'
+    template_name = 'chat/default.html'
