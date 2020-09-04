@@ -1,9 +1,21 @@
 {
 	"name": "Fluidsv",
 	"repository": "https://github.com/drapaiton/noicefluid/",
+	"keywords": [
+		"social network",
+		"python",
+		"portfolio"
+	],
+	"website": "https://www.noicefluid.com/",
+	"success_url": "/",
 	"env": {
+		"PRODUCTION_MODE": {
+			"description": "is the code in a server?",
+			"value": "True"
+		},
 		"DJANGO_SECRET_KEY": {
-			"description": "A secret key for a particular Django installation."
+			"description": "A secret key for a particular Django installation.",
+			"generator": "secret"
 		},
 		"YOUTUBE_TOKEN": {
 			"description": "You can acquire your client secret (TOKEN) from the Google API Console at https://console.developers.google.com/."
