@@ -14,3 +14,4 @@ django-cors-headers
 google-api-python-client
 oauth2client
 coverage
+selenium
