@@ -9,10 +9,6 @@
 	"website": "https://www.noicefluid.com/",
 	"success_url": "/",
 	"env": {
-		"PRODUCTION_MODE": {
-			"description": "is the code in a server?",
-			"value": "True"
-		},
 		"DJANGO_SECRET_KEY": {
 			"description": "A secret key for a particular Django installation.",
 			"generator": "secret"
