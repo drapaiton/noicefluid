@@ -7,7 +7,7 @@ import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-DEBUG = config('DJANGO_DEBUG', default=True, cast=bool)
+DEBUG = config('DJANGO_DEBUG', default=False, cast=bool)
 
 # Get ascii Characters numbers and punctuation (minus quote characters as they could terminate string).
 chars = ''.join([string.ascii_letters, string.digits, string.punctuation]).replace(
@@ -176,7 +176,7 @@ CACHES = {
     }
 }
 
-if config('PRODUCTION_MODE', default=False, cast=bool):
+if config('PRODUCTION_MODE', default=True, cast=bool):
     DATABASES['default'].update(dj_database_url.parse(
         config('DATABASE_URL'), conn_max_age=500, ssl_require=True))
 
