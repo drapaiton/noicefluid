@@ -1,0 +1,26 @@
+{
+  "name": "noicefluid",
+  "version": "1.0.0",
+  "description": "[![Codacy Badge](https://api.codacy.com/project/badge/Grade/def28ac8ee0f4ce1b6138c1fb3947169)](https://app.codacy.com/manual/drapaiton/noicefluid?utm_source=github.com&utm_medium=referral&utm_content=drapaiton/noicefluid&utm_campaign=Badge_Grade_Dashboard)",
+  "main": "manage.py",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/drapaiton/noicefluid.git"
+  },
+  "author": "drapaiton",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/drapaiton/noicefluid/issues"
+  },
+  "homepage": "https://github.com/drapaiton/noicefluid#readme",
+  "devDependencies": {
+    "@types/gapi": "0.0.39",
+    "@types/jquery": "^3.5.1",
+    "typescript": "^4.0.2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.2",
+    "jquery": "^3.5.1",
+    "popper.js": "^1.16.1"
+  }
+}

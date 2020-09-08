@@ -24,5 +24,5 @@ RUN apt-get update \
 # node version 9 using the " n " package
 RUN apt-get -y install --no-install-recommends nodejs npm && npm install -g n && n 9
 
-# install npm dev packages
-RUN npm install --global -y --save-dev typescript @types/jquery @types/gapi
+# install frameworks
+RUN npm install
