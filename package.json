@@ -15,12 +15,13 @@
   "homepage": "https://github.com/drapaiton/noicefluid#readme",
   "devDependencies": {
     "@types/gapi": "0.0.39",
-    "@types/jquery": "^3.5.1",
-    "typescript": "^4.0.2"
+    "@types/jquery": "^3.5.1"
   },
   "dependencies": {
     "bootstrap": "^4.5.2",
+    "bootstrap-icons": "^1.0.0",
     "jquery": "^3.5.1",
-    "popper.js": "^1.16.1"
+    "popper.js": "^1.16.1",
+    "typescript": "^4.0.2"
   }
 }

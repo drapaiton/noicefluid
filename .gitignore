@@ -6,6 +6,8 @@ LICENSE
 # generated in production mode
 node_modules/
 staticfiles/
+*.js
+*.js.map
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
