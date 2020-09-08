@@ -15,6 +15,40 @@ chars = ''.join([string.ascii_letters, string.digits, string.punctuation]).repla
 random_key = ''.join([random.SystemRandom().choice(chars) for i in range(50)])
 SECRET_KEY = config('SECRET_KEY', default=random_key)
 
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': "[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] %(message)s",
+            'datefmt': "%d/%b/%Y %H:%M:%S"
+        },
+        'simple': {
+            'format': '%(levelname)s %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'noicefluid.log',
+            'formatter': 'verbose'
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'propagate': True,
+            'level': 'DEBUG',
+        },
+        'MYAPP': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
+
 ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
@@ -114,17 +148,15 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
+
 # CELERY & REDIS
 SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-
 CELERY_BROKER_URL = config('REDIS_URL')
 CELERY_RESULT_BACKEND = config('REDIS_URL')
-
 CHANNEL_LAYERS = {
     'default': {
         'BACKEND': 'channels_redis.core.RedisChannelLayer',
@@ -133,7 +165,6 @@ CHANNEL_LAYERS = {
         },
     },
 }
-
 CACHES = {
     "default": {
         "BACKEND": "django_redis.cache.RedisCache",
