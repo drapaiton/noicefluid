@@ -1,0 +1,19 @@
+setup:
+    addons:
+        - plan: heroku-postgresql
+        as: DATABASE
+        - plan: heroku-redis
+        as: CACHE-ENGINE
+    config:
+        DJANGO_SECRET_KEY
+        YOUTUBE_TOKEN
+build:
+    docker:
+        web: .docker/Dockerfile
+release:
+    command:
+        - python manage.py migrate --noinput
+    image: web
+run:
+    web: daphne noicefluid.asgi:application --port $PORT --bind 0.0.0.0
+    worker: REMAP_SIGTERM=SIGQUIT celery worker --app noicefluid.celery.app --loglevel info

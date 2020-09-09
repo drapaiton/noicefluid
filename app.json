@@ -29,5 +29,6 @@
 		{
 			"plan": "heroku-redis"
 		}
-	]
+	],
+	"stack": "docker"
 }
