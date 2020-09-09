@@ -5,8 +5,8 @@ setup:
         - plan: heroku-redis
         as: CACHE-ENGINE
     config:
-        DJANGO_SECRET_KEY
-        YOUTUBE_TOKEN
+        DJANGO_SECRET_KEY: secretss
+        YOUTUBE_TOKEN: secretss
 build:
     docker:
         web: .docker/Dockerfile
