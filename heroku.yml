@@ -1,12 +1,5 @@
 build:
   docker:
     web: Dockerfile
-release:
-  command:
-    - python manage.py migrate --noinput
-  image: web
 run:
   web: daphne noicefluid.asgi:application --port $PORT --bind 0.0.0.0
-    image: web
-  worker: REMAP_SIGTERM=SIGQUIT celery worker --app noicefluid.celery.app --loglevel info --workdir src/
-    image: web
