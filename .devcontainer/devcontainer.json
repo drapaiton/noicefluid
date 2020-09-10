@@ -37,7 +37,8 @@
 		"wholroyd.jinja",
 		"ms-python.vscode-pylance",
 		"ms-vscode-remote.remote-containers",
-		"ms-vscode.vscode-typescript-tslint-plugin"
+		"ms-vscode.vscode-typescript-tslint-plugin",
+		"esbenp.prettier-vscode"
 	],
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
