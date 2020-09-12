@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.2
+    volumes:
+      - data:/var/lib/postgresql/data
+
+  django:
+    build:
+      context: ./backend/
+      dockerfile: ./Dockerfile
+      args:
+        REQUIREMENTS_FILENAME: dev
+    command: python manage.py runserver 0:8000
+    restart: always
+    ports:
+      - '8000:8000'
+    depends_on:
+      - db
+    volumes:
+      - ./backend/src:/code
+
+  frontend:
+    build:
+      context: ./frontend/
+      dockerfile: ./Dockerfile.local
+    command: yarn start
+    ports:
+      - '3000:3000'
+volumes:
+  data: {}
